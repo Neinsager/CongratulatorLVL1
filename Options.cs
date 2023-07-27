@@ -12,6 +12,9 @@ namespace CongratulatorLVL1
         private static readonly DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
         private static readonly int daysInCurrentYear = new DateOnly(currentDate.Year, 12, 31).DayOfYear;
         private static List<Person> persons = DeserializeBirthdayList();
+        /// <summary>
+        /// Возвращает слово в падеже, зависимом от заданного числа.
+        /// </summary>
         private static string DecliningTime(int number, string nominativ, string genetiv, string plural)
         {
             var titles = new[] { nominativ, genetiv, plural };
@@ -222,9 +225,5 @@ namespace CongratulatorLVL1
                 "7 - Отобразить все дни рождения;\n" +
                 "0 - Завершение работу программы.");
         }
-        /// <summary>
-        /// Возвращает слово в падеже, зависимом от заданного числа.
-        /// </summary>
-
     }
 }

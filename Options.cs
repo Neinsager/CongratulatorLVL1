@@ -25,7 +25,12 @@ namespace CongratulatorLVL1
         /// Посчитать количество дней до дня рождения.
         /// </summary>
         private static int GetDaysToBirthday(Person person)
-            => (daysInCurrentYear - currentDate.DayOfYear + person.BirthdayDate.DayOfYear) % daysInCurrentYear;
+        {
+            var birthdayDay = new DateOnly(currentDate.Year, person.BirthdayDate.Month, person.BirthdayDate.Day);
+            //Проверка было ли день рождение в текущем году.
+            if (currentDate > birthdayDay) birthdayDay.AddYears(1);
+            return (daysInCurrentYear - currentDate.DayOfYear + birthdayDay.DayOfYear) % daysInCurrentYear;
+        }
         /// <summary>
         /// Проверка ведденной даты.
         /// </summary>
